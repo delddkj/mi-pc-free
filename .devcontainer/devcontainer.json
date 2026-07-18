@@ -1,0 +1,12 @@
+{
+  "name": "PC-Free Linux Desktop",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "linux-desktop",
+  "shutdownAction": "stopCompose",
+  "portsAttributes": {
+    "3000": {
+      "label": "Escritorio Web (KDE)",
+      "onAutoForward": "openBrowser"
+    }
+  }
+}
