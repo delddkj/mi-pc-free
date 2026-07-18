@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  linux-desktop:
+    image: linuxserver/webtop:ubuntu-kde
+    container_name: linux-desktop
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+      - KEYBOARD=en-us-qwerty
+      - WEBPAGE_TITLE=Mi Linux Cloud
+      - RESOLUTION=1920x1080
+      - SUDO_PASSWORD=123456
+      - NOVNC_ENABLE=true
+    ports:
+      - "3000:3000"
+    volumes:
+      - linux-data:/config
+      - /dev/shm:/dev/shm
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - seccomp:unconfined
+    restart: unless-stopped
+volumes:
+  linux-data:
